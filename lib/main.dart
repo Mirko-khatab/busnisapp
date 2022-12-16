@@ -1,7 +1,9 @@
 import 'dart:ffi';
 
 import 'package:busnisapp/Iphone.dart';
+import 'package:busnisapp/login.dart';
 import 'package:busnisapp/samsung.dart';
+import 'package:busnisapp/solash.dart';
 import 'package:flutter/material.dart';
 // import 'package:gashbush/solash.dart';
 import 'Iphone.dart';
@@ -10,7 +12,7 @@ import 'All.dart';
 void main() {
   runApp(MaterialApp(
     debugShowCheckedModeBanner: false,
-    home: MyApp(),
+    home: login(),
   ));
 }
 
