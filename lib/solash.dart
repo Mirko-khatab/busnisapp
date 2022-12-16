@@ -24,25 +24,28 @@ class _solashState extends State<solash> {
 
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.blue[800],
+        backgroundColor: Colors.white,
         body: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Image.asset('images/iphone14.png'),
+              Image.asset(
+                'images/loding.png',
+                fit: BoxFit.cover,
+              ),
               Text(
-                "Phone center",
+                "Online Shoping",
                 style: TextStyle(
-                    color: Colors.white,
+                    color: Colors.pinkAccent,
                     fontSize: 42,
                     fontWeight: FontWeight.bold),
               ),
               SizedBox(height: 30),
               //splash screen circular progress indicator
               CircularProgressIndicator(
-                backgroundColor: Colors.white,
-                valueColor: AlwaysStoppedAnimation<Color>(Colors.blueAccent),
+                backgroundColor: Colors.pinkAccent,
+                valueColor: AlwaysStoppedAnimation<Color>(Colors.pinkAccent),
               ),
             ],
           ),

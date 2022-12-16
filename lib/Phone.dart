@@ -6,6 +6,7 @@ class Phone {
     'Iphone 14',
     'Iphone 14 Pro',
     'Iphone 14 Pro Max',
+    
   ];
 //iphone price list
   List iphonePrice = [
