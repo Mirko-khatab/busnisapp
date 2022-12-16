@@ -30,7 +30,8 @@ class _AllState extends State<All> {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Image(
-                      image: AssetImage("images/iphone14.png"),
+                      image: AssetImage(
+                          "images/${Phone().getAllPhoneImage()[index]}"),
                       fit: BoxFit.contain,
                       width: MediaQuery.of(context).size.width * 0.3,
                     ),
@@ -56,7 +57,7 @@ class _AllState extends State<All> {
                           ),
                           child: Center(
                             child: Text(
-                              "price: 2000",
+                              "${Phone().getAllPhonePrice()[index]}",
                               style: TextStyle(
                                   fontWeight: FontWeight.bold,
                                   color: Colors.white,

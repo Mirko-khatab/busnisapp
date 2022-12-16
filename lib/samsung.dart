@@ -12,7 +12,7 @@ class _samsungState extends State<samsung> {
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
-        itemCount: Phone().iphone.length,
+        itemCount: Phone().samsung.length,
         itemBuilder: ((context, index) {
           return Padding(
             padding: const EdgeInsets.only(top: 20, left: 10, right: 10),
@@ -28,7 +28,8 @@ class _samsungState extends State<samsung> {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Image(
-                      image: AssetImage("images/iphone14.png"),
+                      image:
+                          AssetImage("images/${Phone().samsungImage[index]}"),
                       fit: BoxFit.contain,
                       width: MediaQuery.of(context).size.width * 0.3,
                     ),
@@ -37,7 +38,7 @@ class _samsungState extends State<samsung> {
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         Text(
-                          "${Phone().iphone[index]}",
+                          "${Phone().samsung[index]}",
                           style: TextStyle(
                               fontWeight: FontWeight.bold,
                               fontSize:
@@ -54,7 +55,7 @@ class _samsungState extends State<samsung> {
                           ),
                           child: Center(
                             child: Text(
-                              "price: 2000",
+                              "${Phone().samsungPrice[index]}}",
                               style: TextStyle(
                                   fontWeight: FontWeight.bold,
                                   color: Colors.white,

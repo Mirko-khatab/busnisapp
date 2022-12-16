@@ -1,6 +1,7 @@
 import 'dart:ffi';
 
 import 'package:busnisapp/Iphone.dart';
+import 'package:busnisapp/huawei.dart';
 import 'package:busnisapp/login.dart';
 import 'package:busnisapp/samsung.dart';
 import 'package:busnisapp/solash.dart';
@@ -169,7 +170,7 @@ class _MyAppState extends State<MyApp> {
                   : listName == "samsung"
                       ? samsung()
                       : listName == "huawei"
-                          ? Text('huawei')
+                          ? huawei()
                           : All()),
         ),
       ]),

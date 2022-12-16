@@ -15,9 +15,9 @@ class Phone {
   ];
 //iphone image list
   List iphoneImage = [
-    'iphone12.jpg',
-    'iphone12pro.jpg',
-    'iphone12promax.jpg',
+    'iphone14.png',
+    'iphone14.png',
+    'iphone14.png',
   ];
 
 //samsung name list
@@ -34,9 +34,9 @@ class Phone {
   ];
 //samsung image list
   List samsungImage = [
-    'samsungs21.jpg',
-    'samsungs21ultra.jpg',
-    'samsungs21plus.jpg',
+    'iphone14.png',
+    'iphone14.png',
+    'iphone14.png',
   ];
 //huawei name list
   List huawei = [
@@ -53,9 +53,9 @@ class Phone {
 
 //huawei image list
   List huaweiImage = [
-    'huaweip50.jpg',
-    'huaweip50pro.jpg',
-    'huaweip50proplus.jpg',
+    'iphone14.png',
+    'iphone14.png',
+    'iphone14.png',
   ];
 
 //get all phone name to one list and return it
