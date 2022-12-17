@@ -16,7 +16,8 @@ class _solashState extends State<solash> {
   @override
   void initState() {
     super.initState();
-    Timer(Duration(seconds: 4), () {
+    //splash screen timer 3 second and go to login page if not login and go to home page if login before
+    Timer(Duration(seconds: 3), () {
       Navigator.pushReplacement(
           context, MaterialPageRoute(builder: (context) => MyApp()));
     });

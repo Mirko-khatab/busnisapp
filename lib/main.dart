@@ -1,5 +1,6 @@
 import 'dart:ffi';
 
+import 'package:busnisapp/About.dart';
 import 'package:busnisapp/Iphone.dart';
 import 'package:busnisapp/huawei.dart';
 import 'package:busnisapp/login.dart';
@@ -24,26 +25,75 @@ class MyApp extends StatefulWidget {
   State<MyApp> createState() => _MyAppState();
 }
 
-String listName = "";
-Color color1 = Colors.grey[500]!;
-Color color2 = Colors.grey[500]!;
-
-Color color3 = Colors.grey[500]!;
-
-Color color4 = Colors.grey[500]!;
+String _itemName = "";
 
 class _MyAppState extends State<MyApp> {
   // This widget is the root of your application.
 
   Widget build(BuildContext context) {
-    //array listName to store the name of the list
+    //array _itemName to store the name of the list
     //put the iphone class
 
     return Scaffold(
-      backgroundColor: Colors.blue[800],
+      drawer: Drawer(
+        child: ListView(
+          children: [
+            DrawerHeader(
+                decoration: BoxDecoration(
+                  color: Colors.pink[200],
+                ),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    CircleAvatar(
+                      radius: MediaQuery.of(context).size.width * 0.1,
+                      backgroundImage: AssetImage('images/profile.jpeg'),
+                    ),
+                    Text(
+                      "Sima jalal",
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontSize: MediaQuery.of(context).size.width * 0.04,
+                          fontWeight: FontWeight.bold),
+                    ),
+                    Text(
+                      "Sima@gmail.com ",
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontSize: MediaQuery.of(context).size.width * 0.03,
+                          fontWeight: FontWeight.bold),
+                    ),
+                  ],
+                )),
+            ListTile(
+              title: Text("Home"),
+              onTap: () {
+                Navigator.pushReplacement(
+                    context, MaterialPageRoute(builder: (context) => solash()));
+              },
+            ),
+            ListTile(
+              title: Text("About as"),
+              onTap: () {
+                Navigator.push(
+                    context, MaterialPageRoute(builder: (context) => About()));
+              },
+            ),
+            ListTile(
+              title: Text("Logout"),
+              onTap: () {
+                Navigator.pushReplacement(
+                    context, MaterialPageRoute(builder: (context) => login()));
+              },
+            ),
+          ],
+        ),
+      ),
+      backgroundColor: Colors.pink[200],
       appBar: AppBar(
-        backgroundColor: Colors.blue[800],
-        title: Text('Dash bourd'),
+        backgroundColor: Colors.pink[200],
+        title: Text('Onlineshop'),
         actions: [
           IconButton(onPressed: () {}, icon: Icon(Icons.notifications))
         ],
@@ -69,7 +119,7 @@ class _MyAppState extends State<MyApp> {
         ),
         //list of categories
         Container(
-          height: MediaQuery.of(context).size.height * 0.04,
+          height: MediaQuery.of(context).size.height * 0.08,
           child: ListView(
             // This next line does the trick.
             scrollDirection: Axis.horizontal,
@@ -77,8 +127,7 @@ class _MyAppState extends State<MyApp> {
               GestureDetector(
                 onTap: () {
                   setState(() {
-                    listName = "All";
-                    color1 = Colors.white;
+                    _itemName = "All";
                   });
                 },
                 child: Container(
@@ -88,7 +137,10 @@ class _MyAppState extends State<MyApp> {
                   child: Center(
                       child: Text(
                     'ALL',
-                    style: TextStyle(fontSize: 15, color: color1),
+                    style: TextStyle(
+                        fontSize: 15,
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold),
                   )),
                   width: 120,
                 ),
@@ -96,8 +148,7 @@ class _MyAppState extends State<MyApp> {
               GestureDetector(
                 onTap: () {
                   setState(() {
-                    listName = "iphone";
-                    color2 = Colors.white;
+                    _itemName = "kids";
                   });
                 },
                 child: Container(
@@ -106,8 +157,11 @@ class _MyAppState extends State<MyApp> {
                   ),
                   child: Center(
                       child: Text(
-                    'Iphone',
-                    style: TextStyle(fontSize: 15, color: color2),
+                    'Kids',
+                    style: TextStyle(
+                        fontSize: 15,
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold),
                   )),
                   width: 120,
                 ),
@@ -115,8 +169,7 @@ class _MyAppState extends State<MyApp> {
               GestureDetector(
                 onTap: () {
                   setState(() {
-                    listName = "samsung";
-                    color3 = Colors.white;
+                    _itemName = "Women";
                   });
                 },
                 child: Container(
@@ -125,8 +178,11 @@ class _MyAppState extends State<MyApp> {
                   ),
                   child: Center(
                       child: Text(
-                    'Samsung',
-                    style: TextStyle(fontSize: 15, color: color3),
+                    'Women',
+                    style: TextStyle(
+                        fontSize: 15,
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold),
                   )),
                   width: 120,
                 ),
@@ -134,8 +190,7 @@ class _MyAppState extends State<MyApp> {
               GestureDetector(
                 onTap: () {
                   setState(() {
-                    listName = "huawei";
-                    color4 = Colors.white;
+                    _itemName = "Men";
                   });
                 },
                 child: Container(
@@ -144,8 +199,11 @@ class _MyAppState extends State<MyApp> {
                   ),
                   child: Center(
                       child: Text(
-                    'Huawei',
-                    style: TextStyle(fontSize: 15, color: color4),
+                    'Men',
+                    style: TextStyle(
+                        fontSize: 15,
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold),
                   )),
                   width: 120,
                 ),
@@ -156,25 +214,27 @@ class _MyAppState extends State<MyApp> {
         Padding(
           padding: const EdgeInsets.only(top: 20.0),
           child: Container(
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(50),
-                  topRight: Radius.circular(50),
-                ),
-                color: Colors.grey[300],
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(70),
+                topRight: Radius.circular(70),
               ),
-              width: double.infinity,
-              height: MediaQuery.of(context).size.height * 0.66,
-              child: listName == "iphone"
-                  ? iphone()
-                  : listName == "samsung"
-                      ? samsung()
-                      : listName == "huawei"
-                          ? huawei()
-                          : All()),
+              color: Colors.white,
+            ),
+            width: double.infinity,
+            height: MediaQuery.of(context).size.height * 0.612,
+            // child:
+            // _itemName == "iphone"
+            //     ? iphone()
+            //     : _itemName == "samsung"
+            //         ? samsung()
+            //         : _itemName == "huawei"
+            //             ? huawei()
+            //             : All()
+          ),
         ),
       ]),
     );
-    print("listname --------->${listName}");
+    print("_itemName --------->${_itemName}");
   }
 }

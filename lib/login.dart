@@ -100,7 +100,7 @@ class _loginState extends State<login> {
                 child: TextButton(
                     onPressed: () {
                       if (inpuser == user && inppass == pass) {
-                        Navigator.push(context,
+                        Navigator.pushReplacement(context,
                             MaterialPageRoute(builder: (context) => solash()));
                       } else {
                         print("error");
