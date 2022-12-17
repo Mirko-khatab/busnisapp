@@ -102,9 +102,7 @@ class _loginState extends State<login> {
                       if (inpuser == user && inppass == pass) {
                         Navigator.pushReplacement(context,
                             MaterialPageRoute(builder: (context) => solash()));
-                      } else {
-                        print("error");
-                      }
+                      } else {}
                     },
                     child: Text(
                       "Login",

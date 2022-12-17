@@ -1,15 +1,11 @@
 import 'dart:ffi';
 
 import 'package:busnisapp/About.dart';
-import 'package:busnisapp/Iphone.dart';
-import 'package:busnisapp/huawei.dart';
 import 'package:busnisapp/login.dart';
-import 'package:busnisapp/samsung.dart';
 import 'package:busnisapp/solash.dart';
 import 'package:flutter/material.dart';
 // import 'package:gashbush/solash.dart';
-import 'Iphone.dart';
-import 'All.dart';
+import 'Clothes.dart';
 
 void main() {
   runApp(MaterialApp(
@@ -25,7 +21,10 @@ class MyApp extends StatefulWidget {
   State<MyApp> createState() => _MyAppState();
 }
 
-String _itemName = "";
+int _selectedItem = 0;
+List _itemName = Clothes().getAllclothes();
+List _itemPrice = Clothes().getAllClothesPrice();
+List _itemImage = Clothes().getAllClothesImage();
 
 class _MyAppState extends State<MyApp> {
   // This widget is the root of your application.
@@ -95,7 +94,21 @@ class _MyAppState extends State<MyApp> {
         backgroundColor: Colors.pink[200],
         title: Text('Onlineshop'),
         actions: [
-          IconButton(onPressed: () {}, icon: Icon(Icons.notifications))
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Icon(Icons.shopping_cart, size: 30),
+              SizedBox(
+                width: 10,
+              ),
+              Text(
+                _selectedItem.toString(),
+                style: TextStyle(
+                    fontSize: MediaQuery.of(context).size.height * 0.035),
+              ),
+            ],
+          ),
         ],
       ),
       body: Column(children: [
@@ -127,7 +140,9 @@ class _MyAppState extends State<MyApp> {
               GestureDetector(
                 onTap: () {
                   setState(() {
-                    _itemName = "All";
+                    _itemName = Clothes().getAllclothes();
+                    _itemPrice = Clothes().getAllClothesPrice();
+                    _itemImage = Clothes().getAllClothesImage();
                   });
                 },
                 child: Container(
@@ -148,7 +163,9 @@ class _MyAppState extends State<MyApp> {
               GestureDetector(
                 onTap: () {
                   setState(() {
-                    _itemName = "kids";
+                    _itemName = Clothes().Kids;
+                    _itemPrice = Clothes().kidsPrice;
+                    _itemImage = Clothes().kidsImages;
                   });
                 },
                 child: Container(
@@ -169,7 +186,9 @@ class _MyAppState extends State<MyApp> {
               GestureDetector(
                 onTap: () {
                   setState(() {
-                    _itemName = "Women";
+                    _itemName = Clothes().Women;
+                    _itemPrice = Clothes().womenPrice;
+                    _itemImage = Clothes().womenImage;
                   });
                 },
                 child: Container(
@@ -190,7 +209,9 @@ class _MyAppState extends State<MyApp> {
               GestureDetector(
                 onTap: () {
                   setState(() {
-                    _itemName = "Men";
+                    _itemName = Clothes().menStyle;
+                    _itemPrice = Clothes().menPrice;
+                    _itemImage = Clothes().menImage;
                   });
                 },
                 child: Container(
@@ -213,24 +234,86 @@ class _MyAppState extends State<MyApp> {
         ),
         Padding(
           padding: const EdgeInsets.only(top: 20.0),
-          child: Container(
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(70),
-                topRight: Radius.circular(70),
+          child: Column(
+            children: [
+              Container(
+                decoration: BoxDecoration(
+                  // borderRadius: BorderRadius.only(
+                  //   topLeft: Radius.circular(70),
+                  //   topRight: Radius.circular(70),
+                  // ),
+                  color: Colors.white,
+                ),
+                width: double.infinity,
+                height: MediaQuery.of(context).size.height * 0.17,
+                child: ListView.builder(
+                    scrollDirection: Axis.horizontal,
+                    itemBuilder: ((context, index) {
+                      return Padding(
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 5.0, vertical: 7),
+                        child: (Container(
+                          width: MediaQuery.of(context).size.width * 0.4,
+                          height: MediaQuery.of(context).size.height * 0.17,
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              Image.asset(
+                                "images/${Clothes().getAllClothesImage()[index]}",
+                                fit: BoxFit.contain,
+                                width: MediaQuery.of(context).size.width * 0.22,
+                              ),
+                              Text("${Clothes().getAllclothes()[index]}"),
+                            ],
+                          ),
+                        )),
+                      );
+                    }),
+                    itemCount: Clothes().getAllclothes().length),
               ),
-              color: Colors.white,
-            ),
-            width: double.infinity,
-            height: MediaQuery.of(context).size.height * 0.612,
-            // child:
-            // _itemName == "iphone"
-            //     ? iphone()
-            //     : _itemName == "samsung"
-            //         ? samsung()
-            //         : _itemName == "huawei"
-            //             ? huawei()
-            //             : All()
+              Container(
+                decoration: BoxDecoration(
+                  // borderRadius: BorderRadius.only(
+                  //   topLeft: Radius.circular(70),
+                  //   topRight: Radius.circular(70),
+                  // ),
+                  color: Colors.pink[200],
+                ),
+                width: double.infinity,
+                height: MediaQuery.of(context).size.height * 0.497,
+                child: ListView.builder(
+                    itemBuilder: ((context, index) {
+                      return (ListTile(
+                        title: Text("${_itemName[index]}",
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontSize:
+                                    MediaQuery.of(context).size.height * 0.022,
+                                fontWeight: FontWeight.bold)),
+                        subtitle: Text("${_itemPrice[index]}\$",
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold)),
+                        leading: Image.asset(
+                          "images/${_itemImage[index]}",
+                          fit: BoxFit.contain,
+                          width: MediaQuery.of(context).size.width * 0.25,
+                        ),
+                        trailing: IconButton(
+                          onPressed: () {
+                            setState(() {
+                              _selectedItem++;
+                            });
+                          },
+                          icon: Icon(Icons.add, color: Colors.white),
+                        ),
+                      ));
+                    }),
+                    itemCount: _itemName.length),
+              ),
+            ],
           ),
         ),
       ]),
